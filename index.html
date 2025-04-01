@@ -16,9 +16,8 @@
         #prank {
             display: none;
         }
-        /* Фон с изображением Blue Lock */
         #loading {
-            background-image: url('https://raw.githubusercontent.com/Zane010-tech/Blue-lock-season3-/main/253e5dcf4b283e8125fc521ad580548d.jpg'); /* Ссылка на изображение с raw.githubusercontent.com */
+            background-image: url('https://raw.githubusercontent.com/Zane010-tech/Blue-lock-season3-/main/253e5dcf4b283e8125fc521ad580548d.jpg');
             background-size: cover;
             height: 100vh;
             display: flex;
@@ -28,13 +27,12 @@
         }
         #loading p {
             font-size: 24px;
-            background-color: rgba(0, 0, 0, 0.5); /* Чтобы текст был читаемым */
+            background-color: rgba(0, 0, 0, 0.5);
             padding: 10px;
         }
     </style>
 </head>
 <body>
-    <!-- Загрузка с фоном и новостями -->
     <div id="loading">
         <p>Loading latest news...</p>
     </div>
@@ -43,18 +41,21 @@
         <h2>С 1 апреля, дружище!</h2>
         <p>Поздравляю, я тебя разыграл, как лоха!</p>
         <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" alt="April Fools!">
+        <button onclick="playLaugh()">Включить смех</button> <!-- Кнопка для звука -->
     </div>
 
-    <audio id="laughSound" src="https://raw.githubusercontent.com/Zane010-tech/Blue-lock-season3-/main/tolpa-lyudey-smeetsya-25046.mp3" preload="auto"></audio> <!-- Звук смеха -->
+    <audio id="laughSound" preload="auto">
+        <source src="https://raw.githubusercontent.com/Zane010-tech/Blue-lock-season3-/main/tolpa-lyudey-smeetsya-25046.mp3" type="audio/mpeg">
+    </audio>
 
     <script>
         setTimeout(() => {
-            // Меняем содержимое на поздравление
             document.body.innerHTML = document.getElementById('prank').innerHTML;
-            
-            // Воспроизводим звук смеха
+        }, 3000);
+
+        function playLaugh() {
             document.getElementById('laughSound').play();
-        }, 3000); // Время до появления поздравления (в миллисекундах)
+        }
     </script>
 </body>
 </html>
