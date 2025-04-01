@@ -30,6 +30,11 @@
             background-color: rgba(0, 0, 0, 0.5);
             padding: 10px;
         }
+        button {
+            font-size: 18px;
+            padding: 10px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -41,21 +46,26 @@
         <h2>С 1 апреля, дружище!</h2>
         <p>Поздравляю, я тебя разыграл, как лоха!</p>
         <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" alt="April Fools!">
-        <button onclick="playLaugh()">Включить смех</button> <!-- Кнопка для звука -->
+        <button id="playButton">Включить смех</button>
     </div>
 
-    <audio id="laughSound" preload="auto">
+    <audio id="laughSound">
         <source src="https://raw.githubusercontent.com/Zane010-tech/Blue-lock-season3-/main/tolpa-lyudey-smeetsya-25046.mp3" type="audio/mpeg">
     </audio>
 
     <script>
         setTimeout(() => {
-            document.body.innerHTML = document.getElementById('prank').innerHTML;
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('prank').style.display = 'block';
         }, 3000);
 
         function playLaugh() {
-            document.getElementById('laughSound').play();
+            let audio = document.getElementById('laughSound');
+            audio.play().catch(error => console.log("Ошибка воспроизведения:", error));
         }
+
+        document.getElementById('playButton').addEventListener('click', playLaugh);
+        document.body.addEventListener('click', playLaugh, { once: true });
     </script>
 </body>
 </html>
